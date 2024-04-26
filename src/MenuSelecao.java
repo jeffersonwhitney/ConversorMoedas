@@ -1,9 +1,12 @@
 public class MenuSelecao {
-    private int menuSelecao = 0;
-    private int moedaMenu = 0;
+    private int menuSelecao1;
+    private int menuSelecao2;
+    private int moedaMenu;
 
     public void mostrarmenu1() {
         System.out.println("Digite a moeda de entrada:");
+    }
+    public void opcoes(){
         System.out.println("1-ARS - Peso Argentino        4-CLP - Peso Chileno");
         System.out.println("2-BOB - Boliviano Boliviano   5-COP - Peso Colombiano");
         System.out.println("3-BRL - Real Brasileiro       6-USD - Dolar Americano");
@@ -14,13 +17,9 @@ public class MenuSelecao {
     }
     public void mostrarmenu3() {
         System.out.println("Digite a moeda de saida:");
-        System.out.println("1-ARS - Peso Argentino        4-CLP - Peso Chileno");
-        System.out.println("2-BOB - Boliviano Boliviano   5-COP - Peso Colombiano");
-        System.out.println("3-BRL - Real Brasileiro       6-USD - Dolar Americano");
     }
 
     public String moedaMenu(int moedaMenu){
-        this.moedaMenu = moedaMenu;
         if (moedaMenu == 1)
         {
             return "ARS";
@@ -43,16 +42,32 @@ public class MenuSelecao {
         }
         else if (moedaMenu == 6)
         {
-            return "ARS";
+            return "DOL";
         }
         else return "Opção inválida";
     }
 
-    public int getMenuSelecao() {
-        return menuSelecao;
+    public int getMenuSelecao1() {
+        return menuSelecao1;
     }
 
-    public void setMenuSelecao(int menuSelecao) {
-        this.menuSelecao = menuSelecao;
+    public void setMenuSelecao1(int menuSelecao1) {
+        this.menuSelecao1 = menuSelecao1;
+    }
+
+    public int getMenuSelecao2() {
+        return menuSelecao2;
+    }
+
+    public void setMenuSelecao2(int menuSelecao2) {
+        this.menuSelecao2 = menuSelecao2;
+    }
+
+    public int getMoedaMenu() {
+        return moedaMenu;
+    }
+
+    public void setMoedaMenu(int moedaMenu) {
+        this.moedaMenu = moedaMenu;
     }
 }
