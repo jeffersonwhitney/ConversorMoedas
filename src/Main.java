@@ -11,46 +11,48 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-
-        int primeira;
-        int segunda;
-
         Scanner leitura = new Scanner(System.in); // cria um scanner
-        MenuSelecao menuEntrada = new MenuSelecao(); // cria um objeto menu
-        menuEntrada.mostrarmenu1(); // da print no menu de entrada
-        menuEntrada.opcoes(); //da print nas opcoes
+        Scanner leitura2 = new Scanner(System.in); //cria um novo scanner
+        Scanner leitura3 = new Scanner(System.in);
+        MenuSelecao menu = new MenuSelecao(); // cria um objeto menu
+        Moeda moeda = new Moeda(); // cria uma moeda
 
-        primeira= (Integer.parseInt(leitura.nextLine()));
-        menuEntrada.setMenuSelecao1(primeira);
-        menuEntrada.setMoedaMenu(primeira);
+        //PRIMEIRA ETAPA
+        menu.mostrarTexto1(); // Printa primeiro texto
+        menu.opcoesDeMoedas(); // Printa as opções de moedas
+        menu.setMenuSelecao1((Integer.parseInt(leitura.nextLine())));// Armazena a primeira seleção
+
+        //CONSULTA DA API COM O RESULTADO DO METODO
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://v6.exchangerate-api.com/v6/d950eb8f18f932c5af797a8e/latest/" + menuEntrada.moedaMenu(primeira)))
+                .uri(URI.create("https://v6.exchangerate-api.com/v6/d950eb8f18f932c5af797a8e/latest/" + menu.menuDeMoedas(menu.getMenuSelecao1())))
                 .build();
-        //aqui ele vai fazer a requisição da api ja com a resposta da funcao que retorna a moeda de entrada
 
-        Scanner leitura2 = new Scanner(System.in); //cria um novo scanner
-        menuEntrada.mostrarmenu2(); //chama o metodo menu 2
-        Moeda moedaEntrada = new Moeda(); // cria uma moeda
-        moedaEntrada.setQuantidade(Double.parseDouble(leitura2.nextLine())); //seta a quantidade em double na moeda criada
-        moedaEntrada.setTipo(menuEntrada.moedaMenu(menuEntrada.getMoedaMenu()));
+        //SEGUNDA ETAPA
+        menu.mostrarTexto2(); // Printa segundo texto
+        moeda.setQuantidade(Double.parseDouble(leitura2.nextLine())); // Armazena a quantidade da moeda em Double
+        moeda.setTipoOrigem(menu.menuDeMoedas(menu.getMenuSelecao1())); // Usa o metodo menuDeMoedas para retornar e armazenar a moeda Origem
 
-        Scanner leitura3 = new Scanner(System.in);
-        menuEntrada.mostrarmenu3(); //mostra a opcao de saida
-        menuEntrada.opcoes(); //mostra o menu novamente
-        menuEntrada.setMenuSelecao2(Integer.parseInt(leitura3.nextLine()));
+        //TERCEIRA ETAPA
+        menu.mostrarTexto3(); //mostra a opcao de saida
+        menu.opcoesDeMoedas(); //mostra o menu novamente
+        menu.setMenuSelecao2(Integer.parseInt(leitura3.nextLine()));
+        moeda.setTipoDestino(menu.menuDeMoedas(menu.getMenuSelecao2()));
         System.out.println("processando..."); //aqui eh pra não pensar que ta demorando muito
 
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+
         String json = response.body();
+        System.out.println(json);
+        Gson gson = new Gson();
 
 
-        System.out.println(menuEntrada.getMenuSelecao1());
-        System.out.println(moedaEntrada.getQuantidade());
-        System.out.println(moedaEntrada.getTipo());
-        System.out.println(menuEntrada.getMenuSelecao2());
+        System.out.println(menu.getMenuSelecao1());
+        System.out.println(moeda.getQuantidade());
+        System.out.println(moeda.getTipoOrigem());
+        System.out.println(moeda.getTipoDestino());
+        System.out.println(menu.getMenuSelecao2());
 
 
     }

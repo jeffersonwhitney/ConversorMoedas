@@ -1,25 +1,24 @@
 public class MenuSelecao {
     private int menuSelecao1;
     private int menuSelecao2;
-    private int moedaMenu;
 
-    public void mostrarmenu1() {
+    public void mostrarTexto1() {
         System.out.println("Digite a moeda de entrada:");
     }
-    public void opcoes(){
+    public void opcoesDeMoedas(){
         System.out.println("1-ARS - Peso Argentino        4-CLP - Peso Chileno");
         System.out.println("2-BOB - Boliviano Boliviano   5-COP - Peso Colombiano");
         System.out.println("3-BRL - Real Brasileiro       6-USD - Dolar Americano");
     }
-    public void mostrarmenu2()
+    public void mostrarTexto2()
     {
         System.out.println("Digite o valor a ser convertido com até duas casas decimais separados por ponto: ");
     }
-    public void mostrarmenu3() {
+    public void mostrarTexto3() {
         System.out.println("Digite a moeda de saida:");
     }
 
-    public String moedaMenu(int moedaMenu){
+    public String menuDeMoedas(int moedaMenu){
         if (moedaMenu == 1)
         {
             return "ARS";
@@ -63,11 +62,4 @@ public class MenuSelecao {
         this.menuSelecao2 = menuSelecao2;
     }
 
-    public int getMoedaMenu() {
-        return moedaMenu;
-    }
-
-    public void setMoedaMenu(int moedaMenu) {
-        this.moedaMenu = moedaMenu;
-    }
 }
