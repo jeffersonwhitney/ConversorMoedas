@@ -4,7 +4,13 @@ public class Moeda {
     private double Quantidade;
     private String tipoOrigem;
     private String tipoDestino;
-    @SerializedName(this.tipoDestino)
+    double ARS;
+    double BOB;
+    double BRL;
+    double CLP;
+    double COP;
+    double DOL;
+
     private double conversao;
 
     public double getQuantidade() {

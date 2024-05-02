@@ -25,7 +25,7 @@ public class Main {
         //CONSULTA DA API COM O RESULTADO DO METODO
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://v6.exchangerate-api.com/v6/d950eb8f18f932c5af797a8e/latest/" + menu.menuDeMoedas(menu.getMenuSelecao1())))
+                    .uri(URI.create("https://v6.exchangerate-api.com/v6/d950eb8f18f932c5af797a8e/latest/" + menu.menuDeMoedas(menu.getMenuSelecao1())))
                 .build();
 
         //SEGUNDA ETAPA
@@ -46,6 +46,9 @@ public class Main {
         String json = response.body();
         System.out.println(json);
         Gson gson = new Gson();
+        TabelaConversao conversaomoeda = gson.fromJson(json, TabelaConversao.class);
+        System.out.println(conversaomoeda);
+
 
 
         System.out.println(menu.getMenuSelecao1());
