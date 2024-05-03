@@ -4,60 +4,9 @@ public class Moeda {
     private double Quantidade;
     private String tipoOrigem;
     private String tipoDestino;
-    private double ars;
-    private double bob;
-    private double brl;
-    private double clp;
-    private double cop;
-    private double dol;
+    private double taxaDestino;
 
-    public double getArs() {
-        return ars;
-    }
 
-    public void setArs(double ars) {
-        this.ars = ars;
-    }
-
-    public double getBob() {
-        return bob;
-    }
-
-    public void setBob(double bob) {
-        this.bob = bob;
-    }
-
-    public double getBrl() {
-        return brl;
-    }
-
-    public void setBrl(double brl) {
-        this.brl = brl;
-    }
-
-    public double getClp() {
-        return clp;
-    }
-
-    public void setClp(double clp) {
-        this.clp = clp;
-    }
-
-    public double getCop() {
-        return cop;
-    }
-
-    public void setCop(double cop) {
-        this.cop = cop;
-    }
-
-    public double getDol() {
-        return dol;
-    }
-
-    public void setDol(double dol) {
-        this.dol = dol;
-    }
 
     public double getQuantidade() {
         return Quantidade;
@@ -79,5 +28,13 @@ public class Moeda {
 
     public void setTipoDestino(String tipoDestino) {
         this.tipoDestino = tipoDestino;
+    }
+
+    public double getTaxaDestino() {
+        return taxaDestino;
+    }
+
+    public void setTaxaDestino(double taxaDestino) {
+        this.taxaDestino = taxaDestino;
     }
 }

@@ -2,8 +2,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,8 +24,6 @@ public class Main {
         menu.opcoesDeMoedas(); // Printa as opções de moedas
         menu.setMenuSelecao1((Integer.parseInt(leitura.nextLine())));// Armazena a primeira seleção
 
-
-
         //SEGUNDA ETAPA
         menu.mostrarTexto2(); // Printa segundo texto
         moeda.setQuantidade(Double.parseDouble(leitura2.nextLine())); // Armazena a quantidade da moeda em Double
@@ -41,74 +37,20 @@ public class Main {
         System.out.println("processando..."); //aqui eh pra não pensar que ta demorando muito
 
         //CONSULTA DA API COM O RESULTADO DO METODO
-//        HttpClient client = HttpClient.newHttpClient();
-//        HttpRequest request = HttpRequest.newBuilder()
-//                .uri(URI.create("https://v6.exchangerate-api.com/v6/d950eb8f18f932c5af797a8e/latest/" + menu.menuDeMoedas(menu.getMenuSelecao1())))
-//                .build();
-//        HttpResponse<String> response = client
-//                .send(request, HttpResponse.BodyHandlers.ofString());
-
-//        String json = response.body();
-//        System.out.println(json);
 
         String url_str = "https://v6.exchangerate-api.com/v6/d950eb8f18f932c5af797a8e/latest/" + menu.menuDeMoedas(menu.getMenuSelecao1());
-
         URL url = new URL(url_str);
         HttpURLConnection request = (HttpURLConnection) url.openConnection();
         request.connect();
-
-        Gson gson = new Gson();
-
         JsonParser jp = new JsonParser();
         JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
         JsonObject jsonobj = root.getAsJsonObject();
-
-        //String req_result = jsonobj.get("result").getAsString();
-
-        //JsonObject jsonObject = gson.fromJson(root, JsonObject.class);
         JsonObject conversionRates = jsonobj.getAsJsonObject("conversion_rates");
 
+        moeda.setTaxaDestino(conversionRates.getAsJsonPrimitive(moeda.getTipoDestino()).getAsDouble());
 
-        System.out.println(conversionRates);
 
-        if (conversionRates.has("ARS")) {
-            moeda.setArs(conversionRates.getAsJsonPrimitive("ARS").getAsDouble());
-        } else {
-            moeda.setArs(0.0);
-        }
-
-        if (conversionRates.has("BOB")) {
-            moeda.setBob(conversionRates.getAsJsonPrimitive("BOB").getAsDouble());
-        } else {
-            moeda.setBob(0.0);
-        }
-
-        if (conversionRates.has("BRL")) {
-            moeda.setBrl(conversionRates.getAsJsonPrimitive("BRL").getAsDouble());
-        } else {
-            moeda.setBrl(0.0);
-        }
-
-        if (conversionRates.has("CLP")) {
-            moeda.setClp(conversionRates.getAsJsonPrimitive("CLP").getAsDouble());
-        } else {
-            moeda.setClp(0.0);
-        }
-
-        if (conversionRates.has("COP")) {
-            moeda.setCop(conversionRates.getAsJsonPrimitive("COP").getAsDouble());
-        } else {
-            moeda.setCop(0.0);
-        }
-
-        if (conversionRates.has("DOL")) {
-            moeda.setDol(conversionRates.getAsJsonPrimitive("DOL").getAsDouble());
-        } else {
-            moeda.setDol(0.0);
-        }
-
-        System.out.println(moeda.getArs());
-        System.out.println(moeda.getBob());
+        System.out.println(moeda.getTaxaDestino());
         System.out.println("*********************");
         System.out.println(menu.getMenuSelecao1());
         System.out.println(moeda.getQuantidade());
