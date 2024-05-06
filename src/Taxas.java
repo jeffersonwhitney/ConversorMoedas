@@ -1,2 +1,2 @@
-public record Taxas (String conversion_rates) {
+public record Taxas (Object conversion_rates, double taxaUSD) {
 }
