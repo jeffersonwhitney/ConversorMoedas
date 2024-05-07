@@ -1,6 +1,9 @@
 public class MenuSelecao {
     private int menuSelecao1;
     private int menuSelecao2;
+    private String tipoOrigem;
+    private String tipoDestino;
+    private double quantidade;
 
     public void mostrarTexto1() {
         System.out.println("Digite a moeda de entrada:");
@@ -41,7 +44,7 @@ public class MenuSelecao {
         }
         else if (moedaMenu == 6)
         {
-            return "DOL";
+            return "USD";
         }
         else return "Opção inválida";
     }
@@ -62,4 +65,27 @@ public class MenuSelecao {
         this.menuSelecao2 = menuSelecao2;
     }
 
+    public double getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(double quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getTipoOrigem() {
+        return tipoOrigem;
+    }
+
+    public void setTipoOrigem(String tipoOrigem) {
+        this.tipoOrigem = tipoOrigem;
+    }
+
+    public String getTipoDestino() {
+        return tipoDestino;
+    }
+
+    public void setTipoDestino(String tipoDestino) {
+        this.tipoDestino = tipoDestino;
+    }
 }
