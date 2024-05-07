@@ -19,13 +19,10 @@ public class ConsultaAPI {
             HttpResponse<String> response = HttpClient
                     .newHttpClient()
                     .send(request, HttpResponse.BodyHandlers.ofString());
-         //System.out.println(response.body());
-         //System.out.println("**************************aa");
          JsonObject jsonObject = new Gson().fromJson(response.body(), JsonObject.class);
          JsonObject conversionRates = jsonObject.getAsJsonObject("conversion_rates");
          double taxaUSD = conversionRates.getAsJsonPrimitive("USD").getAsDouble();
          return new Taxas(conversionRates, taxaUSD);
-         //return new Taxas(conversionRates);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Não consegui obter as taxas");
         }

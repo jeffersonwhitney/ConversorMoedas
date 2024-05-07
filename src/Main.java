@@ -1,12 +1,4 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Scanner;
 
 
@@ -41,16 +33,7 @@ public class Main {
         String variavel = menu.menuDeMoedas(menu.getMenuSelecao1());
         Taxas taxas = consultaapi.Consulta(variavel);
 
-
         System.out.println(taxas.taxaUSD());
-
-        //System.out.println(moeda.getTaxaDestino());
-        System.out.println("*********************");
-        System.out.println(menu.getMenuSelecao1());
-        System.out.println(moeda.getQuantidade());
-        System.out.println(moeda.getTipoOrigem());
-        System.out.println(moeda.getTipoDestino());
-        System.out.println(menu.getMenuSelecao2());
 
     }
 }

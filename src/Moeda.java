@@ -30,9 +30,7 @@ public class Moeda {
         this.tipoDestino = tipoDestino;
     }
 
-    public double getTaxaDestino() {
-        return taxaDestino;
-    }
+    public double getTaxaDestino() {return taxaDestino;}
 
     public void setTaxaDestino(double taxaDestino) {
         this.taxaDestino = taxaDestino;
