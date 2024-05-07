@@ -45,7 +45,7 @@ Este projeto, desenvolvido em Java, implementa um conversor de moedas utilizando
 
 **Links Úteis:**
 
-* Repositório GitHub: [[https://github.com/](https://github.com/jeffersonwhitney/ConversorMoedas)
+* Repositório GitHub: [https://github.com/](https://github.com/jeffersonwhitney/ConversorMoedas)
 * Documentação da API ExchangeRateApi: [https://exchangeratesapi.io/](https://exchangeratesapi.io/)
 
 **Agradecimentos:**
